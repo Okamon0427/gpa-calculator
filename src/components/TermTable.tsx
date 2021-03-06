@@ -1,38 +1,81 @@
-import { Button, Col, FormGroup, Input, Row } from 'reactstrap';
+import { Form, Input, InputNumber, Button, Select, Space } from 'antd';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
-interface Props {
-  removeRow: (key: number) => void;
-  index: number;
-}
+const { Option } = Select;
 
-const TermTable: React.FC<Props> = ({ removeRow, index }) => {
+const TermTable: React.FC = () => {
+  const onFinish = (values: any) => {
+    console.log('Received values of form:', values);
+  };
+
   return (
-    <Row form>
-      <Col md={1}>
-        <Button onClick={() => removeRow(index)}>Remove</Button>
-      </Col>
-      <Col md={7}>
-        <FormGroup>
-          <Input type="text" name="course" id="course" placeholder="placeholder" />
-        </FormGroup>
-      </Col>
-      <Col md={2}>
-        <FormGroup>
-          <Input type="number" name="credit" id="credit" placeholder="placeholder" />
-        </FormGroup>
-      </Col>
-      <Col md={2}>
-        <FormGroup>
-          <Input type="select" name="grade" id="grade">
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-            <option>E</option>
-          </Input>
-        </FormGroup>
-      </Col>
-    </Row>
+    <Form
+      name="dynamic_form_nest_item"
+      onFinish={onFinish}
+      autoComplete="off"
+    >
+      <Form.List name="course_gpa">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(field => (
+              <Space
+                key={field.key}
+                style={{ display: 'flex', marginBottom: 8 }}
+                align="baseline"
+              >
+                <Form.Item
+                  {...field}
+                  name={[field.name, 'course']}
+                  fieldKey={[field.fieldKey, 'course']}
+                >
+                  <Input placeholder="Course" />
+                </Form.Item>
+                <Form.Item
+                  {...field}
+                  name={[field.name, 'credit']}
+                  fieldKey={[field.fieldKey, 'credit']}
+                  rules={[{ required: true, message: 'Required' }]}
+                >
+                  <InputNumber placeholder="0" step={0.5} />
+                </Form.Item>
+                <Form.Item
+                  name={[field.name, 'grade']}
+                  fieldKey={[field.fieldKey, 'grade']}
+                  rules={[{ required: true, message: 'Required' }]}
+                >
+                  <Select
+                    placeholder="Select a option"
+                    allowClear
+                  >
+                    <Option value="A">A</Option>
+                    <Option value="B+">B+</Option>
+                    <Option value="B">B</Option>
+                    <Option value="C">C</Option>
+                    <Option value="D">D</Option>
+                  </Select>
+                </Form.Item>
+                <MinusCircleOutlined onClick={() => remove(field.name)} />
+              </Space>
+            ))}
+            <Form.Item>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                block
+                icon={<PlusOutlined />}
+              >
+                Add field
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 
