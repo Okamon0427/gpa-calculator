@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography } from 'antd';
+import TermForm from './components/TermForm';
 import TermTable from './components/TermTable';
 import 'antd/dist/antd.css'
 
@@ -11,6 +12,7 @@ const App: React.FC = () => {
       <Title level={2}>
         GPA Calculator
       </Title>
+      <TermForm />
       <TermTable />
     </>
   );
