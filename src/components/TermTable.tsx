@@ -28,6 +28,11 @@ const columns: ColumnsType<Data> = [
     dataIndex: 'grade',
     key: 'grade',
   },
+  {
+    title: 'Score',
+    dataIndex: 'score',
+    key: 'score',
+  },
 ];
 
 const TermTable: React.FC<Props> = ({ data }: Props) => {  

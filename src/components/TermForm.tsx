@@ -1,4 +1,4 @@
-import { Card, Form, Input, InputNumber, Button, Select, Space, Typography } from 'antd';
+import { Card, Form, Input, InputNumber, Button, Select, Space } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
