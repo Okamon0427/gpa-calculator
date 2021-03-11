@@ -1,63 +1,36 @@
-import { Card, Table, Space } from 'antd';
+import { Card, Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+
+interface Props {
+  data: any[]
+}
 
 interface Data {
   key: string,
-  name: string,
-  age: number,
-  address: string,
+  course: string,
+  credit: number,
+  grade: string,
 }
 
-const data: Data[] = [
+const columns: ColumnsType<Data> = [
   {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
+    title: 'Course',
+    dataIndex: 'course',
+    key: 'course',
   },
   {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
+    title: 'Credit',
+    dataIndex: 'credit',
+    key: 'credit',
   },
   {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
+    title: 'Grade',
+    dataIndex: 'grade',
+    key: 'grade',
   },
 ];
 
-const TermTable: React.FC = () => {
-  const columns: ColumnsType<Data> = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      render: text => <a>{text}</a>,
-    },
-    {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
-    },
-    {
-      title: 'Action',
-      key: 'action',
-      render: (text, record) => (
-        <Space size="middle">
-          <a>Delete</a>
-        </Space>
-      ),
-    },
-  ];
-  
+const TermTable: React.FC<Props> = ({ data }: Props) => {  
   return (
     <Card style={{ width: 600 }}>
       <Table<Data> columns={columns} dataSource={data} />

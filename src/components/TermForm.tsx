@@ -3,16 +3,16 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
-const TermForm: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log('Received values of form:', values);
-  };
+interface Props {
+  onSubmit: (values: any) => void;
+}
 
+const TermForm: React.FC<Props> = ({ onSubmit }: Props) => {
   return (
     <Card style={{ width: 600 }}>
       <Form
         name="dynamic_form_nest_item"
-        onFinish={onFinish}
+        onFinish={onSubmit}
         autoComplete="off"
       >
         <Form.List name="course_gpa" initialValue={["", "", ""]}>
