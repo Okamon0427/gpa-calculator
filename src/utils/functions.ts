@@ -8,7 +8,7 @@ interface newCourses extends Courses {
   score: number
 }
 
-export const addScore = (courses: Courses[]): newCourses[] => {
+export const addScore = (courses: Courses[]) => {
   const newCourses: newCourses[] = courses.map(courseObj => {
     let gradeNum = 0;
     switch(courseObj.grade) {
@@ -32,4 +32,20 @@ export const addScore = (courses: Courses[]): newCourses[] => {
     return { ...courseObj, score };
   });
   return newCourses;
+};
+
+export const calcGPA = (newCourses: newCourses[]) => {
+  let totalCredits = 0;
+  let totalScores = 0;
+  newCourses.forEach((course) => {
+    totalCredits += course.credit;
+    totalScores += course.score;
+  });
+  
+  let GPA = 0;
+  if (totalCredits > 0) {
+    GPA = totalScores / totalCredits;
+  }
+
+  return { totalCredits, GPA };
 };
