@@ -1,16 +1,23 @@
 import { Button, Card, Form, InputNumber, Typography } from 'antd';
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
+
+const layout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
+};
 
 interface Props {
   onSubmit: (values: any) => void;
   additionalGPA: number;
 }
 
-const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => {  
+const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => { 
   return (
-    <Card style={{ width: 600 }}>
+    <Card>
+      <Title level={4}>Estimate upcoming GPA</Title>
       <Form
+        {...layout}
         name="basic"
         onFinish={onSubmit}
       >
@@ -48,7 +55,9 @@ const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => 
           </Button>
         </Form.Item>
       </Form>
-      <Text>You have to get: {additionalGPA}</Text>
+      {additionalGPA > 0 ? (
+        <Text>You have to get: {additionalGPA}</Text>
+      ) : null}
     </Card>
   );
 };

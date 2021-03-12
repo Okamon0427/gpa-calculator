@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Card, Typography } from 'antd';
+import { Col, Row, Typography } from 'antd';
 import GPAForm from './components/GPAForm';
 import GPAPredictForm from './components/GPAPredictForm';
 import { addScore, calcGPA, calcAdditionalGPA } from './utils/functions';
 import 'antd/dist/antd.css'
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 const App: React.FC = () => {
   const [credit, setCredit] = useState<number>(0);
@@ -32,11 +32,25 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Title level={2}>
-        GPA Calculator
-      </Title>
-      <GPAForm onSubmit={onSubmit1} credit={credit} GPA={GPA} />
-      <GPAPredictForm onSubmit={onSubmit2} additionalGPA={additionalGPA} />
+      <Row>
+        {/* <Col xs={2} md={8} /> */}
+        <Col span={24}>
+          <Title style={{ textAlign: 'center' }} level={2}>
+            GPA Calculator
+          </Title>
+        </Col>
+        {/* <Col xs={2} md={8} /> */}
+      </Row>
+      <Row>
+        <Col xs={0} lg={2} />
+        <Col xs={24} md={16}>
+          <GPAForm onSubmit={onSubmit1} credit={credit} GPA={GPA} />
+          <GPAPredictForm onSubmit={onSubmit2} additionalGPA={additionalGPA} />
+        </Col>
+        <Col xs={0} md={6} lg={4}>
+        </Col>
+        <Col xs={0} lg={2} />
+      </Row>
     </>
   );
 }

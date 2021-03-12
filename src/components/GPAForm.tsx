@@ -2,7 +2,7 @@ import { Card, Form, Input, InputNumber, Button, Select, Space, Typography } fro
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 interface Props {
   onSubmit: (values: any) => void;
@@ -12,7 +12,8 @@ interface Props {
 
 const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA }: Props) => {
   return (
-    <Card style={{ width: 600 }}>
+    <Card>
+      <Title level={4}>Calculate GPA</Title>
       <Form
         name="dynamic_form_nest_item"
         onFinish={onSubmit}
@@ -80,9 +81,13 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA }: Props) => {
           </Button>
         </Form.Item>
       </Form>
-      <Text>Total Credits: {credit}</Text>
-        <br />
-      <Text>GPA: {GPA}</Text>
+      {credit > 0 && GPA > 0 ? (
+        <>
+          <Text>Total Credits: {credit}</Text>
+          <br />
+          <Text>GPA: {GPA}</Text>
+        </>
+      ) : null}
     </Card>
   );
 };
