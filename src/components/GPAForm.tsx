@@ -7,7 +7,7 @@ interface Props {
   onSubmit: (values: any) => void;
 }
 
-const TermForm: React.FC<Props> = ({ onSubmit }: Props) => {
+const GPAForm: React.FC<Props> = ({ onSubmit }: Props) => {
   return (
     <Card style={{ width: 600 }}>
       <Form
@@ -81,4 +81,4 @@ const TermForm: React.FC<Props> = ({ onSubmit }: Props) => {
   );
 };
 
-export default TermForm;
+export default GPAForm;

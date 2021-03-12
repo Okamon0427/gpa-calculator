@@ -8,6 +8,13 @@ interface newCourses extends Courses {
   score: number
 }
 
+interface GPAInfo {
+  currentGPA: number,
+  targetGPA: number,
+  currentCredits: number,
+  additionalCredits: number
+}
+
 export const addScore = (courses: Courses[]) => {
   const newCourses: newCourses[] = courses.map(courseObj => {
     let gradeNum = 0;
@@ -48,4 +55,13 @@ export const calcGPA = (newCourses: newCourses[]) => {
   }
 
   return { totalCredits, GPA };
+};
+
+export const calcAdditionalGPA = (GPAInfo: GPAInfo) => {
+  const { currentGPA, targetGPA, currentCredits, additionalCredits } = GPAInfo;
+
+  const additionalGPA
+    = (targetGPA * (currentCredits + additionalCredits) - currentGPA * currentCredits) / additionalCredits;
+  
+    return additionalGPA;
 };
