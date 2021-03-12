@@ -1,10 +1,13 @@
-import { Card, Form, InputNumber, Button } from 'antd';
+import { Button, Card, Form, InputNumber, Typography } from 'antd';
+
+const { Text } = Typography;
 
 interface Props {
   onSubmit: (values: any) => void;
+  additionalGPA: number;
 }
 
-const GPAPredictForm: React.FC<Props> = ({ onSubmit }: Props) => {  
+const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => {  
   return (
     <Card style={{ width: 600 }}>
       <Form
@@ -45,6 +48,7 @@ const GPAPredictForm: React.FC<Props> = ({ onSubmit }: Props) => {
           </Button>
         </Form.Item>
       </Form>
+      <Text>You have to get: {additionalGPA}</Text>
     </Card>
   );
 };

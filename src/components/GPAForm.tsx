@@ -1,13 +1,16 @@
-import { Card, Form, Input, InputNumber, Button, Select, Space } from 'antd';
+import { Card, Form, Input, InputNumber, Button, Select, Space, Typography } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
+const { Text } = Typography;
 
 interface Props {
   onSubmit: (values: any) => void;
+  credit: number,
+  GPA: number
 }
 
-const GPAForm: React.FC<Props> = ({ onSubmit }: Props) => {
+const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA }: Props) => {
   return (
     <Card style={{ width: 600 }}>
       <Form
@@ -77,6 +80,9 @@ const GPAForm: React.FC<Props> = ({ onSubmit }: Props) => {
           </Button>
         </Form.Item>
       </Form>
+      <Text>Total Credits: {credit}</Text>
+        <br />
+      <Text>GPA: {GPA}</Text>
     </Card>
   );
 };
