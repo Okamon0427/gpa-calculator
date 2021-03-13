@@ -9,27 +9,31 @@ const layout = {
 
 interface Props {
   onSubmit: (values: any) => void;
+  grades: any;
 }
 
-const GradeExample: React.FC<Props> = ({ onSubmit }: Props) => {
+const GradeExample: React.FC<Props> = ({ onSubmit, grades }: Props) => {
   return (
     <Card>
       <Title level={4}>Grade Setting</Title>
       <Form
         {...layout}
-        name="basic"
+        name="grades"
         onFinish={onSubmit}
       >
-        <Form.Item
-          label="A"
-          name="A"
-          initialValue={4.0}
-        >
-          <InputNumber placeholder="4.0" step={0.1} />
-        </Form.Item>
+        {grades.map((grade: any, index: number) => (
+          <Form.Item
+            key={index}
+            label={grade?.letter}
+            name={grade?.letter}
+            initialValue={grade?.score}
+          >
+            <InputNumber step={0.1} />
+          </Form.Item>
+        ))}
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Submit
+            Apply
           </Button>
         </Form.Item>
       </Form>

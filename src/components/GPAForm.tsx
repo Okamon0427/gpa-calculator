@@ -7,10 +7,11 @@ const { Text, Title } = Typography;
 interface Props {
   onSubmit: (values: any) => void;
   credit: number,
-  GPA: number
+  GPA: number,
+  grades: any
 }
 
-const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA }: Props) => {
+const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
   return (
     <Card>
       <Title level={4}>Calculate GPA</Title>
@@ -49,14 +50,17 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA }: Props) => {
                     rules={[{ required: true, message: 'Required' }]}
                   >
                     <Select
-                      placeholder="Select a option"
+                      placeholder="Grade"
                       allowClear
                     >
-                      <Option value="A">A</Option>
-                      <Option value="B+">B+</Option>
-                      <Option value="B">B</Option>
-                      <Option value="C">C</Option>
-                      <Option value="D">D</Option>
+                      {grades.map((grade: any, index: number) => (
+                        <Option
+                          key={index}
+                          value={grade.letter}
+                        >
+                          {grade?.letter} ({grade?.score})
+                        </Option>
+                      ))}
                     </Select>
                   </Form.Item>
                   <MinusCircleOutlined onClick={() => remove(field.name)} />

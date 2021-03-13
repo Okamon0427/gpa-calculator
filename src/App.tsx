@@ -8,10 +8,19 @@ import 'antd/dist/antd.css'
 
 const { Title } = Typography;
 
+const initialGrades = [
+  { letter: 'A', score: 4.0 },
+  { letter: 'B+', score: 3.5 },
+  { letter: 'B', score: 3.0 },
+  { letter: 'C', score: 2.5 },
+  { letter: 'D', score: 2.0 },
+];
+
 const App: React.FC = () => {
   const [credit, setCredit] = useState<number>(0);
   const [GPA, setGPA] = useState<number>(0);
   const [additionalGPA, setAdditionalGPA] = useState<number>(0);
+  const [grades, setGrades] = useState(initialGrades);
 
   const onSubmit1 = (values: any) => {
     // add score object in couurses arrays
@@ -32,7 +41,11 @@ const App: React.FC = () => {
   };
 
   const onSubmit3 = (values: any) => {
-    console.log(values);
+    const newGrades = grades.map((grade: any) => {
+      grade.score = values[grade.letter];
+      return grade;
+    });
+    setGrades(newGrades);
   }
 
   return (
@@ -51,6 +64,7 @@ const App: React.FC = () => {
             onSubmit={onSubmit1}
             credit={credit}
             GPA={GPA}
+            grades={grades}
           />
           <GPAPredictForm
             onSubmit={onSubmit2}
@@ -58,7 +72,7 @@ const App: React.FC = () => {
           />
         </Col>
         <Col xs={0} md={6}>
-          <GradeExample onSubmit={onSubmit3} />
+          <GradeExample onSubmit={onSubmit3} grades={grades} />
         </Col>
         <Col xs={0} md={1} lg={2} />
       </Row>
