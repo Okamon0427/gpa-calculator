@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Row, Typography } from 'antd';
+import { Col, Row, message, Typography } from 'antd';
 import GPAForm from './components/GPAForm';
 import GPAPredictForm from './components/GPAPredictForm';
 import GradeExample from './components/GradeExample';
@@ -45,7 +45,10 @@ const App: React.FC = () => {
       grade.score = values[grade.letter];
       return grade;
     });
+    
     setGrades(newGrades);
+
+    message.success('Grade setting has been updated.');
   }
 
   return (

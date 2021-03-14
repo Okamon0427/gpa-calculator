@@ -56,7 +56,7 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
                       {grades.map((grade: any, index: number) => (
                         <Option
                           key={index}
-                          value={grade.letter}
+                          value={grade?.score}
                         >
                           {grade?.letter} ({grade?.score})
                         </Option>
