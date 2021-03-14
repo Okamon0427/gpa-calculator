@@ -42,7 +42,7 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
                     fieldKey={[field.fieldKey, 'credit']}
                     rules={[{ required: true, message: 'Required' }]}
                   >
-                    <InputNumber placeholder="0" step={0.5} />
+                    <InputNumber placeholder="0.0" min={0} max={10} step={0.5} />
                   </Form.Item>
                   <Form.Item
                     name={[field.name, 'grade']}
@@ -58,7 +58,7 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
                           key={index}
                           value={grade?.score}
                         >
-                          {grade?.letter} ({grade?.score})
+                          {grade?.letter} ({grade?.score.toFixed(1)})
                         </Option>
                       ))}
                     </Select>
@@ -87,9 +87,9 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
       </Form>
       {credit > 0 && GPA > 0 ? (
         <>
-          <Text>Total Credits: {credit}</Text>
+          <Text>Total Credits: {credit.toFixed(1)}</Text>
           <br />
-          <Text>GPA: {GPA}</Text>
+          <Text>GPA: {GPA.toFixed(2)}</Text>
         </>
       ) : null}
     </Card>

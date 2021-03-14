@@ -29,7 +29,7 @@ const GradeExample: React.FC<Props> = ({ onSubmit, grades }: Props) => {
             initialValue={grade?.score}
             rules={[{ required: true, message: 'Required' }]}
           >
-            <InputNumber step={0.1} />
+            <InputNumber min={0} max={10} step={0.1} />
           </Form.Item>
         ))}
         <Form.Item>

@@ -26,14 +26,14 @@ const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => 
           name="currentGPA"
           rules={[{ required: true, message: 'Required' }]}
         >
-          <InputNumber placeholder="0" step={0.01} />
+          <InputNumber placeholder="0" min={0} max={10} step={0.01} />
         </Form.Item>
         <Form.Item
           label="Target GPA"
           name="targetGPA"
           rules={[{ required: true, message: 'Required' }]}
         >
-          <InputNumber placeholder="0" step={0.01} />
+          <InputNumber placeholder="0" min={0} max={10} step={0.01} />
         </Form.Item>
         <Form.Item
           label="Current Credits"
@@ -56,7 +56,7 @@ const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => 
         </Form.Item>
       </Form>
       {additionalGPA > 0 ? (
-        <Text>You have to get: {additionalGPA}</Text>
+        <Text>You have to get: {additionalGPA.toFixed(2)}</Text>
       ) : null}
     </Card>
   );
