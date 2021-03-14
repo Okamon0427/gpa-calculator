@@ -4,23 +4,16 @@ import GPAForm from './components/GPAForm';
 import GPAPredictForm from './components/GPAPredictForm';
 import GradeExample from './components/GradeExample';
 import { addScore, calcGPA, calcAdditionalGPA } from './utils/functions';
+import { INITIAL_GRADES, MESSAGE } from './utils/constants';
 import 'antd/dist/antd.css'
 
 const { Title } = Typography;
-
-const initialGrades = [
-  { letter: 'A', score: 4.0 },
-  { letter: 'B+', score: 3.5 },
-  { letter: 'B', score: 3.0 },
-  { letter: 'C', score: 2.5 },
-  { letter: 'D', score: 2.0 },
-];
 
 const App: React.FC = () => {
   const [credit, setCredit] = useState<number>(0);
   const [GPA, setGPA] = useState<number>(0);
   const [additionalGPA, setAdditionalGPA] = useState<number>(0);
-  const [grades, setGrades] = useState(initialGrades);
+  const [grades, setGrades] = useState(INITIAL_GRADES);
 
   const onSubmit1 = (values: any) => {
     // add score object in couurses arrays
@@ -48,7 +41,7 @@ const App: React.FC = () => {
     
     setGrades(newGrades);
 
-    message.success('Grade setting has been updated.');
+    message.success(MESSAGE.SUCCESS_GRADE_SETTING);
   }
 
   return (
