@@ -1,16 +1,23 @@
-import { Col, Layout, Row, message, Typography } from 'antd';
+import { Layout } from 'antd';
 
 const { Content, Footer, Header } = Layout;
 
 const LayoutComponent: React.FC = ({ children }) => {
   return (
     <Layout>
-      <Header>GPA Calculator</Header>
-      <Content>{children}</Content>
-      <Footer style={{ textAlign: 'center' }}>GPA Calculator</Footer>
+      <Header
+        style={{ position: 'fixed', zIndex: 1, width: '100%', color: 'white' }}
+      >
+        GPA Calculator
+      </Header>
+      <Content style={{ marginTop: '64px' }}>
+        {children}
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>
+        GPA Calculator
+      </Footer>
     </Layout>
   );
 }
-
 
 export default LayoutComponent;

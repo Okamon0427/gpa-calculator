@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Col, Row, message, Typography } from 'antd';
+import Layout from './components/Layout';
 import GPAForm from './components/GPAForm';
 import GPAPredictForm from './components/GPAPredictForm';
 import GradeExample from './components/GradeExample';
 import { addScore, calcGPA, calcAdditionalGPA } from './utils/functions';
 import { INITIAL_GRADES, MESSAGE } from './utils/constants';
 import 'antd/dist/antd.css'
-
-const { Title } = Typography;
 
 const App: React.FC = () => {
   const [credit, setCredit] = useState<number>(0);
@@ -45,14 +44,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <>
-      <Row>
-        <Col span={24}>
-          <Title style={{ textAlign: 'center' }} level={2}>
-            GPA Calculator
-          </Title>
-        </Col>
-      </Row>
+    <Layout>
       <Row>
         <Col xs={0} md={1} lg={2} />
         <Col xs={24} md={16} lg={14}>
@@ -73,7 +65,7 @@ const App: React.FC = () => {
         </Col>
         <Col xs={0} md={1} lg={2} />
       </Row>
-    </>
+    </Layout>
   );
 }
 
