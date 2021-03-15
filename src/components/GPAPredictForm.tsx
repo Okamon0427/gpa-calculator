@@ -18,6 +18,7 @@ const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => 
       <Title level={4}>Estimate upcoming GPA</Title>
       <Form
         {...layout}
+        layout="horizontal"
         name="basic"
         onFinish={onSubmit}
       >

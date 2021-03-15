@@ -42,7 +42,7 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
                     fieldKey={[field.fieldKey, 'credit']}
                     rules={[{ required: true, message: 'Required' }]}
                   >
-                    <InputNumber placeholder="0.0" min={0} max={10} step={0.5} />
+                    <InputNumber placeholder="Credit" min={0} max={10} step={0.5} />
                   </Form.Item>
                   <Form.Item
                     name={[field.name, 'grade']}

@@ -66,9 +66,10 @@ const App: React.FC = () => {
             onSubmit={onSubmit2}
             additionalGPA={additionalGPA}
           />
-        </Col>
-        <Col xs={0} md={6}>
-          <GradeExample onSubmit={onSubmit3} grades={grades} />
+          <GradeExample
+            onSubmit={onSubmit3}
+            grades={grades}
+          />
         </Col>
         <Col xs={0} md={1} lg={2} />
       </Row>
