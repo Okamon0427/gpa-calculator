@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Row, message, Typography } from 'antd';
+import { Col, Row, message } from 'antd';
 import Layout from './components/Layout';
 import GPAForm from './components/GPAForm';
 import GPAPredictForm from './components/GPAPredictForm';
