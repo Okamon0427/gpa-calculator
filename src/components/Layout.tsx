@@ -14,7 +14,9 @@ const useStyles = createUseStyles({
     marginTop: '64px'
   },
   footer: {
-    textAlign: 'center'
+    textAlign: 'center',
+    padding: '12px 50px',
+    backgroundColor: '#C0C0C0'
   }
 });
 
@@ -30,7 +32,7 @@ const LayoutComponent: React.FC = ({ children }) => {
         {children}
       </Content>
       <Footer className={classes.footer}>
-        GPA Calculator
+        GPA Calculator &#169; Created by Takuto Okamoto
       </Footer>
       <BackTop visibilityHeight={200} />
     </Layout>
