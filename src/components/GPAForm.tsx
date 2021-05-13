@@ -2,7 +2,7 @@ import { Form, Input, InputNumber, Button, Select, Space, Typography } from 'ant
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';  
 
 const { Option } = Select;
-const { Title } = Typography;
+const { Text, Title } = Typography;
 
 interface Props {
   onSubmit: (values: any) => void;
@@ -87,7 +87,8 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
       </Form>
       {credit > 0 && GPA > 0 ? (
         <>
-          <Title level={4}>Total Credits: {credit.toFixed(1)}</Title>
+          <Text>Total Credits: {credit.toFixed(1)}</Text>
+          <br />
           <Title level={4}>GPA: {GPA.toFixed(2)}</Title>
         </>
       ) : null}

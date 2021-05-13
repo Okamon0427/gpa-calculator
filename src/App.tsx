@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createUseStyles } from 'react-jss';
 import { Col, Row, message } from 'antd';
 import Layout from './components/Layout';
 import GPAForm from './components/GPAForm';
@@ -8,7 +9,19 @@ import { addScore, calcGPA, calcAdditionalGPA } from './utils/functions';
 import { INITIAL_GRADES, MESSAGE } from './utils/constants';
 import 'antd/dist/antd.css'
 
+const useStyles = createUseStyles({
+  line: {
+    display: 'block'
+  },
+  '@media (min-width: 768px)': {
+    line: {
+      display: 'none' 
+    }
+  } 
+});
+
 const App: React.FC = () => {
+  const classes = useStyles();
   const [credit, setCredit] = useState<number>(0);
   const [GPA, setGPA] = useState<number>(0);
   const [additionalGPA, setAdditionalGPA] = useState<number>(0);
@@ -60,7 +73,7 @@ const App: React.FC = () => {
           />
         </Col>
         <Col xs={24} md={8} xl={4}>
-          <hr />
+          <hr className={classes.line} />
           <GradeExample
             onSubmit={onSubmit3}
             grades={grades}

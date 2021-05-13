@@ -25,9 +25,9 @@ const useStyles = createUseStyles({
   },
   '@media (min-width: 768px)': {
     container: {
-      width: '80vw',
+      width: '90vw',
     }
-  } 
+  },
 });
 
 const LayoutComponent: React.FC = ({ children }) => {
