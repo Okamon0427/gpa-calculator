@@ -1,4 +1,4 @@
-import { Button, Card, Form, InputNumber, Typography } from 'antd';
+import { Button, Form, InputNumber, Typography } from 'antd';
 
 const { Title } = Typography;
 
@@ -14,7 +14,7 @@ interface Props {
 
 const GradeExample: React.FC<Props> = ({ onSubmit, grades }: Props) => {
   return (
-    <Card>
+    <>
       <Title level={4}>Grade Setting</Title>
       <Form
         {...layout}
@@ -38,7 +38,7 @@ const GradeExample: React.FC<Props> = ({ onSubmit, grades }: Props) => {
           </Button>
         </Form.Item>
       </Form>
-    </Card>
+    </>
   );
 };
 

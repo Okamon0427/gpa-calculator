@@ -17,7 +17,17 @@ const useStyles = createUseStyles({
     textAlign: 'center',
     padding: '12px 50px',
     backgroundColor: '#C0C0C0'
-  }
+  },
+  container: {
+    width: '90vw',
+    margin: '0 auto',
+    padding: '16px 0'
+  },
+  '@media (min-width: 768px)': {
+    container: {
+      width: '80vw',
+    }
+  } 
 });
 
 const LayoutComponent: React.FC = ({ children }) => {
@@ -29,7 +39,9 @@ const LayoutComponent: React.FC = ({ children }) => {
         GPA Calculator
       </Header>
       <Content className={classes.content}>
-        {children}
+        <div className={classes.container}>
+          {children}
+        </div>
       </Content>
       <Footer className={classes.footer}>
         GPA Calculator &#169; Created by Takuto Okamoto

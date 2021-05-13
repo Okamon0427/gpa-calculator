@@ -45,25 +45,27 @@ const App: React.FC = () => {
 
   return (
     <Layout>
-      <Row>
-        <Col xs={0} md={1} lg={2} />
-        <Col xs={24} md={16} lg={14}>
+      <Row gutter={32}>
+        <Col xs={24} md={16} xl={20}>
           <GPAForm
             onSubmit={onSubmit1}
             credit={credit}
             GPA={GPA}
             grades={grades}
           />
+          <hr />
           <GPAPredictForm
             onSubmit={onSubmit2}
             additionalGPA={additionalGPA}
           />
+        </Col>
+        <Col xs={24} md={8} xl={4}>
+          <hr />
           <GradeExample
             onSubmit={onSubmit3}
             grades={grades}
           />
         </Col>
-        <Col xs={0} md={1} lg={2} />
       </Row>
     </Layout>
   );
