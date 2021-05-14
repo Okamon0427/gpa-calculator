@@ -1,9 +1,12 @@
 # Todo - App
-Calculate your GPA. You can also estimate GPA for upcoming term to get target GPA in total.
+Calculate your GPA with this application. You can also estimate your GPA for the upcoming term to get the target GPA in total. Furthermore, the score corresponding to each grade can be changed depending on your school!
 
 ---
 ## URL
 https://gpa-calculator-14a4b.web.app/
+
+## Image
+![Main Page](./public/main.JPG)
 
 ## Getting Started
 copy this project into your local machine
