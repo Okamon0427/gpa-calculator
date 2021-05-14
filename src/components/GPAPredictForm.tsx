@@ -1,6 +1,15 @@
-import { Button, Col, Form, InputNumber, Row, Typography } from 'antd';
+import { createUseStyles } from 'react-jss';
+import { Button, Form, InputNumber, Typography } from 'antd';
 
-const { Title } = Typography;
+const { Text, Title } = Typography;
+
+const useStyles = createUseStyles({
+  number: {
+    textAlign: 'baseline',
+    fontWeight: 'bold',
+    fontSize: '1.5rem'
+  }
+});
 
 const layout = {
   labelCol: { span: 8 },
@@ -12,7 +21,9 @@ interface Props {
   additionalGPA: number;
 }
 
-const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => { 
+const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => {
+  const classes = useStyles();
+
   return (
     <>
       <Title level={4}>Estimate upcoming GPA</Title>
@@ -22,46 +33,34 @@ const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => 
         name="basic"
         onFinish={onSubmit}
       >
-        <Row>
-          <Col xs={24} xl={12}>
-            <Form.Item
-              label="Current GPA"
-              name="currentGPA"
-              rules={[{ required: true, message: 'Required' }]}
-            >
-              <InputNumber placeholder="0" min={0} max={10} step={0.01} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} xl={12}>
-            <Form.Item
-              label="Target GPA"
-              name="targetGPA"
-              rules={[{ required: true, message: 'Required' }]}
-            >
-              <InputNumber placeholder="0" min={0} max={10} step={0.01} />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={24} xl={12}>
-            <Form.Item
-              label="Current Credits"
-              name="currentCredits"
-              rules={[{ required: true, message: 'Required' }]}
-            >
-              <InputNumber placeholder="0" step={0.5} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} xl={12}>
-            <Form.Item
-              label="Additional Credits"
-              name="additionalCredits"
-              rules={[{ required: true, message: 'Required' }]}
-            >
-              <InputNumber placeholder="0" step={0.5} />
-            </Form.Item>
-          </Col>
-        </Row>
+        <Form.Item
+          label="Current GPA"
+          name="currentGPA"
+          rules={[{ required: true, message: 'Required' }]}
+        >
+          <InputNumber placeholder="0" min={0} max={10} step={0.01} />
+        </Form.Item>
+        <Form.Item
+          label="Target GPA"
+          name="targetGPA"
+          rules={[{ required: true, message: 'Required' }]}
+        >
+          <InputNumber placeholder="0" min={0} max={10} step={0.01} />
+        </Form.Item>
+        <Form.Item
+          label="Current Credits"
+          name="currentCredits"
+          rules={[{ required: true, message: 'Required' }]}
+        >
+          <InputNumber placeholder="0" step={0.5} />
+        </Form.Item>
+        <Form.Item
+          label="Additional Credits"
+          name="additionalCredits"
+          rules={[{ required: true, message: 'Required' }]}
+        >
+          <InputNumber placeholder="0" step={0.5} />
+        </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
             Submit
@@ -69,7 +68,9 @@ const GPAPredictForm: React.FC<Props> = ({ onSubmit, additionalGPA }: Props) => 
         </Form.Item>
       </Form>
       {additionalGPA > 0 ? (
-        <Title level={4}>You have to get a GPA of {additionalGPA.toFixed(2)} or higher</Title>
+        <Text>
+          You have to get a GPA of <span className={classes.number}>{additionalGPA.toFixed(2)}</span> or higher
+        </Text>
       ) : null}
     </>
   );

@@ -8,7 +8,8 @@ const useStyles = createUseStyles({
     position: 'fixed',
     zIndex: 1,
     width: '100%',
-    color: 'white'
+    color: 'white',
+    fontSize: '1.3rem'
   },
   content: {
     marginTop: '64px'
@@ -26,6 +27,11 @@ const useStyles = createUseStyles({
   '@media (min-width: 768px)': {
     container: {
       width: '90vw',
+    }
+  },
+  '@media (min-width: 992px)': {
+    container: {
+      width: '80vw',
     }
   },
 });

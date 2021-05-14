@@ -1,8 +1,15 @@
-import { Form, Input, InputNumber, Button, Select, Space, Typography } from 'antd';
+import { createUseStyles } from 'react-jss';
+import { Col, Form, Input, InputNumber, Button, Row, Select, Space, Typography } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';  
 
 const { Option } = Select;
 const { Text, Title } = Typography;
+
+const useStyles = createUseStyles({
+  addField: {
+    maxWidth: 380
+  },
+});
 
 interface Props {
   onSubmit: (values: any) => void;
@@ -12,6 +19,8 @@ interface Props {
 }
 
 const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
+  const classes = useStyles();
+
   return (
     <>
       <Title level={4}>Calculate GPA</Title>
@@ -66,7 +75,7 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
                   <MinusCircleOutlined onClick={() => remove(field.name)} />
                 </Space>
               ))}
-              <Form.Item>
+              <Form.Item className={classes.addField}>
                 <Button
                   type="dashed"
                   onClick={() => add()}
@@ -86,11 +95,18 @@ const GPAForm: React.FC<Props> = ({ onSubmit, credit, GPA, grades }: Props) => {
         </Form.Item>
       </Form>
       {credit > 0 && GPA > 0 ? (
-        <>
-          <Text>Total Credits: {credit.toFixed(1)}</Text>
-          <br />
-          <Title level={4}>GPA: {GPA.toFixed(2)}</Title>
-        </>
+        <Row>
+          <Col span={24}>
+            <Text>
+              Total Credits: {credit.toFixed(1)}
+            </Text>
+          </Col>
+          <Col span={24}>
+            <Title level={4}>
+              GPA: {GPA.toFixed(2)}
+            </Title>
+          </Col>
+        </Row>
       ) : null}
     </>
   );
